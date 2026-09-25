@@ -1,0 +1,571 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Eduplus School Management</title>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: white;
+        color: black;
+    }
+
+    /* =========================
+       SCHOOL HEADER
+    ========================== */
+
+    .school-header {
+        width: 92%;
+        margin: 20px auto;
+        padding: 25px;
+        border: 2px solid black;
+        border-radius: 12px;
+        text-align: center;
+        background: white;
+    }
+
+    .school-header h1 {
+        margin: 0 0 12px 0;
+        font-size: 30px;
+    }
+
+    .school-header p {
+        margin: 5px 0;
+        font-size: 18px;
+    }
+
+    /* =========================
+       MAIN CLASS BLOCK
+    ========================== */
+
+    .class-section {
+        width: 92%;
+        margin: 20px auto;
+        padding: 20px;
+        border: 2px solid black;
+        border-radius: 12px;
+    }
+
+    .class-section h2 {
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .class-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .class-button {
+        background: green;
+        color: black;
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 18px 10px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .class-button:hover {
+        background: #65c765;
+    }
+
+    /* =========================
+       STUDENT AREA
+    ========================== */
+
+    .student-section {
+        width: 92%;
+        margin: 20px auto;
+        padding: 20px;
+        border: 2px solid black;
+        border-radius: 12px;
+        display: none;
+    }
+
+    .student-card {
+        border: 1px solid black;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .student-card h3 {
+        margin-top: 0;
+    }
+
+    /* =========================
+       ADMIN / TEACHER BLOCK
+    ========================== */
+
+    .management-section {
+        width: 92%;
+        margin: 20px auto;
+        padding: 20px;
+        border: 2px solid black;
+        border-radius: 12px;
+    }
+
+    .management-section h2 {
+        text-align: center;
+    }
+
+    .management-section input {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        font-size: 16px;
+        border: 1px solid black;
+        border-radius: 6px;
+    }
+
+    .management-button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        background: white;
+        color: black;
+        border: 2px solid black;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* =========================
+       ADMIN PANEL
+    ========================== */
+
+    #adminPanel {
+        display: none;
+        margin-top: 20px;
+        border-top: 2px solid black;
+        padding-top: 20px;
+    }
+
+    .pending-box {
+        border: 1px solid black;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+        text-align: center;
+        padding: 30px 10px;
+        margin-top: 30px;
+        font-size: 16px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (min-width: 600px) {
+
+        .class-grid {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+    }
+
+</style>
+
+</head><body><!-- =========================
+     SCHOOL INFORMATION
+========================== -->
+
+<div class="school-header">
+
+    <h1 id="schoolName">
+        YOUR SCHOOL NAME
+    </h1>
+
+    <p>
+        Head Master:
+        <strong id="headMasterName">
+            YOUR HEAD MASTER NAME
+        </strong>
+    </p>
+
+</div>
+
+
+
+<!-- =========================
+     CLASS SECTION
+========================== -->
+
+<div class="class-section">
+
+    <h2>Classes</h2>
+
+    <div class="class-grid">
+
+        <button class="class-button" onclick="showClass(1)">
+            Class 1
+        </button>
+
+        <button class="class-button" onclick="showClass(2)">
+            Class 2
+        </button>
+
+        <button class="class-button" onclick="showClass(3)">
+            Class 3
+        </button>
+
+        <button class="class-button" onclick="showClass(4)">
+            Class 4
+        </button>
+
+        <button class="class-button" onclick="showClass(5)">
+            Class 5
+        </button>
+
+        <button class="class-button" onclick="showClass(6)">
+            Class 6
+        </button>
+
+        <button class="class-button" onclick="showClass(7)">
+            Class 7
+        </button>
+
+        <button class="class-button" onclick="showClass(8)">
+            Class 8
+        </button>
+
+        <button class="class-button" onclick="showClass(9)">
+            Class 9
+        </button>
+
+        <button class="class-button" onclick="showClass(10)">
+            Class 10
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     STUDENT INFORMATION
+========================== -->
+
+<div id="studentSection" class="student-section">
+
+    <h2 id="classTitle">
+        Students
+    </h2>
+
+    <div id="studentList"></div>
+
+</div>
+
+
+
+<!-- =========================
+     TEACHER / ADMIN
+========================== -->
+
+<div class="management-section">
+
+    <h2>Teacher & Admin</h2>
+
+    <label>
+        Teacher ID
+    </label>
+
+    <input
+        type="text"
+        id="teacherID"
+        placeholder="Enter Teacher ID"
+    >
+
+    <button
+        class="management-button"
+        onclick="teacherLogin()"
+    >
+        Teacher Login
+    </button>
+
+
+    <br><br>
+
+
+    <label>
+        Admin Password
+    </label>
+
+    <input
+        type="password"
+        id="adminPassword"
+        placeholder="Enter Admin Password"
+    >
+
+    <button
+        class="management-button"
+        onclick="adminLogin()"
+    >
+        Admin Login
+    </button>
+
+
+    <!-- ADMIN PANEL -->
+
+    <div id="adminPanel">
+
+        <h3>Admin Panel</h3>
+
+        <p>
+            Pending Requests
+        </p>
+
+        <div class="pending-box">
+            No pending requests currently.
+        </div>
+
+        <h3>Student Management</h3>
+
+        <button
+            class="management-button"
+            onclick="manageStudents()"
+        >
+            Manage Students
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    Powered by Eduplus.
+
+</footer>
+
+
+
+<script>
+
+    /* =========================
+       SAMPLE STUDENT DATA
+    ========================== */
+
+    const students = {
+
+        1: [
+            {
+                name: "Student 1",
+                roll: "001",
+                age: "7"
+            },
+
+            {
+                name: "Student 2",
+                roll: "002",
+                age: "7"
+            }
+        ],
+
+        2: [
+            {
+                name: "Student 3",
+                roll: "001",
+                age: "8"
+            }
+        ],
+
+        3: [],
+
+        4: [],
+
+        5: [],
+
+        6: [],
+
+        7: [],
+
+        8: [],
+
+        9: [],
+
+        10: []
+
+    };
+
+
+
+    /* =========================
+       SHOW CLASS
+    ========================== */
+
+    function showClass(classNumber) {
+
+        const section =
+            document.getElementById("studentSection");
+
+        const title =
+            document.getElementById("classTitle");
+
+        const list =
+            document.getElementById("studentList");
+
+
+        section.style.display = "block";
+
+
+        title.textContent =
+            "Class " + classNumber + " Students";
+
+
+        list.innerHTML = "";
+
+
+        if (
+            !students[classNumber] ||
+            students[classNumber].length === 0
+        ) {
+
+            list.innerHTML =
+                "<p>No student data available.</p>";
+
+            return;
+
+        }
+
+
+        students[classNumber].forEach(function(student) {
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "student-card";
+
+
+            card.innerHTML = `
+
+                <h3>${student.name}</h3>
+
+                <p>
+                    <strong>Roll:</strong>
+                    ${student.roll}
+                </p>
+
+                <p>
+                    <strong>Age:</strong>
+                    ${student.age}
+                </p>
+
+            `;
+
+
+            list.appendChild(card);
+
+        });
+
+    }
+
+
+
+    /* =========================
+       TEACHER LOGIN
+    ========================== */
+
+    function teacherLogin() {
+
+        const teacherID =
+            document.getElementById("teacherID").value.trim();
+
+
+        if (teacherID === "") {
+
+            alert("Please enter Teacher ID.");
+
+            return;
+
+        }
+
+
+        alert(
+            "Teacher ID accepted for this demo."
+        );
+
+    }
+
+
+
+    /* =========================
+       ADMIN LOGIN
+    ========================== */
+
+    function adminLogin() {
+
+        const password =
+            document.getElementById("adminPassword").value;
+
+
+        /*
+         IMPORTANT:
+         This is only a demo password.
+         It is NOT secure for a real school system.
+        */
+
+        const demoPassword =
+            "admin123";
+
+
+        if (password === demoPassword) {
+
+            document.getElementById("adminPanel")
+                .style.display = "block";
+
+            alert("Admin access granted.");
+
+        }
+
+        else {
+
+            alert("Incorrect admin password.");
+
+        }
+
+    }
+
+
+
+    /* =========================
+       MANAGE STUDENTS
+    ========================== */
+
+    function manageStudents() {
+
+        alert(
+            "Student management panel will be added here."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
