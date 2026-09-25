@@ -1,197 +1,153 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Eduplus School Management</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eduplus School Management</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
 
-    * {
-        box-sizing: border-box;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+}
 
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background: white;
-        color: black;
-    }
+.header {
+    width: 94%;
+    margin: 20px auto;
+    padding: 25px;
+    border: 2px solid black;
+    border-radius: 12px;
+    text-align: center;
+}
 
-    /* =========================
-       SCHOOL HEADER
-    ========================== */
+.header h1 {
+    margin: 0 0 10px;
+}
 
-    .school-header {
-        width: 92%;
-        margin: 20px auto;
-        padding: 25px;
-        border: 2px solid black;
-        border-radius: 12px;
-        text-align: center;
-        background: white;
-    }
+.section {
+    width: 94%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 12px;
+}
 
-    .school-header h1 {
-        margin: 0 0 12px 0;
-        font-size: 30px;
-    }
+.section h2 {
+    text-align: center;
+}
 
-    .school-header p {
-        margin: 5px 0;
-        font-size: 18px;
-    }
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
 
-    /* =========================
-       MAIN CLASS BLOCK
-    ========================== */
+.class-button {
+    padding: 18px 5px;
+    background: green;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
 
-    .class-section {
-        width: 92%;
-        margin: 20px auto;
-        padding: 20px;
-        border: 2px solid black;
-        border-radius: 12px;
-    }
+.class-button:hover {
+    background: #65c765;
+}
 
-    .class-section h2 {
-        text-align: center;
-        margin-top: 0;
-    }
+button {
+    cursor: pointer;
+}
 
+.form-box {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 7px 0 12px;
+    border: 1px solid black;
+    border-radius: 6px;
+    font-size: 16px;
+    background: white;
+    color: black;
+}
+
+textarea {
+    min-height: 80px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 13px;
+    background: green;
+    color: black;
+    border: 2px solid black;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.person-card {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 12px 0;
+}
+
+.person-card h3 {
+    margin-top: 0;
+}
+
+.action-button {
+    padding: 8px 12px;
+    margin: 4px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: white;
+    color: black;
+}
+
+.danger {
+    background: #eee;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+}
+
+@media (min-width: 600px) {
     .class-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: repeat(5, 1fr);
     }
-
-    .class-button {
-        background: green;
-        color: black;
-        border: 2px solid black;
-        border-radius: 10px;
-        padding: 18px 10px;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    .class-button:hover {
-        background: #65c765;
-    }
-
-    /* =========================
-       STUDENT AREA
-    ========================== */
-
-    .student-section {
-        width: 92%;
-        margin: 20px auto;
-        padding: 20px;
-        border: 2px solid black;
-        border-radius: 12px;
-        display: none;
-    }
-
-    .student-card {
-        border: 1px solid black;
-        border-radius: 8px;
-        padding: 15px;
-        margin: 10px 0;
-    }
-
-    .student-card h3 {
-        margin-top: 0;
-    }
-
-    /* =========================
-       ADMIN / TEACHER BLOCK
-    ========================== */
-
-    .management-section {
-        width: 92%;
-        margin: 20px auto;
-        padding: 20px;
-        border: 2px solid black;
-        border-radius: 12px;
-    }
-
-    .management-section h2 {
-        text-align: center;
-    }
-
-    .management-section input {
-        width: 100%;
-        padding: 12px;
-        margin: 8px 0;
-        font-size: 16px;
-        border: 1px solid black;
-        border-radius: 6px;
-    }
-
-    .management-button {
-        width: 100%;
-        padding: 12px;
-        margin-top: 8px;
-        background: white;
-        color: black;
-        border: 2px solid black;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    /* =========================
-       ADMIN PANEL
-    ========================== */
-
-    #adminPanel {
-        display: none;
-        margin-top: 20px;
-        border-top: 2px solid black;
-        padding-top: 20px;
-    }
-
-    .pending-box {
-        border: 1px solid black;
-        padding: 12px;
-        margin: 10px 0;
-        border-radius: 8px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================== */
-
-    footer {
-        text-align: center;
-        padding: 30px 10px;
-        margin-top: 30px;
-        font-size: 16px;
-    }
-
-    /* =========================
-       MOBILE
-    ========================== */
-
-    @media (min-width: 600px) {
-
-        .class-grid {
-            grid-template-columns: repeat(5, 1fr);
-        }
-
-    }
-
+}
 </style>
+</head>
 
-</head><body><!-- =========================
-     SCHOOL INFORMATION
-========================== -->
+<body>
 
-<div class="school-header">
+<!-- SCHOOL HEADER -->
 
-    <h1 id="schoolName">
-        YOUR SCHOOL NAME
-    </h1>
+<div class="header">
+    <h1 id="schoolName">YOUR SCHOOL NAME</h1>
 
     <p>
         Head Master:
@@ -199,151 +155,167 @@
             YOUR HEAD MASTER NAME
         </strong>
     </p>
-
 </div>
 
 
+<!-- CLASSES -->
 
-<!-- =========================
-     CLASS SECTION
-========================== -->
-
-<div class="class-section">
+<div class="section">
 
     <h2>Classes</h2>
 
     <div class="class-grid">
 
-        <button class="class-button" onclick="showClass(1)">
-            Class 1
-        </button>
-
-        <button class="class-button" onclick="showClass(2)">
-            Class 2
-        </button>
-
-        <button class="class-button" onclick="showClass(3)">
-            Class 3
-        </button>
-
-        <button class="class-button" onclick="showClass(4)">
-            Class 4
-        </button>
-
-        <button class="class-button" onclick="showClass(5)">
-            Class 5
-        </button>
-
-        <button class="class-button" onclick="showClass(6)">
-            Class 6
-        </button>
-
-        <button class="class-button" onclick="showClass(7)">
-            Class 7
-        </button>
-
-        <button class="class-button" onclick="showClass(8)">
-            Class 8
-        </button>
-
-        <button class="class-button" onclick="showClass(9)">
-            Class 9
-        </button>
-
-        <button class="class-button" onclick="showClass(10)">
-            Class 10
-        </button>
+        <button class="class-button" onclick="showClass(1)">Class 1</button>
+        <button class="class-button" onclick="showClass(2)">Class 2</button>
+        <button class="class-button" onclick="showClass(3)">Class 3</button>
+        <button class="class-button" onclick="showClass(4)">Class 4</button>
+        <button class="class-button" onclick="showClass(5)">Class 5</button>
+        <button class="class-button" onclick="showClass(6)">Class 6</button>
+        <button class="class-button" onclick="showClass(7)">Class 7</button>
+        <button class="class-button" onclick="showClass(8)">Class 8</button>
+        <button class="class-button" onclick="showClass(9)">Class 9</button>
+        <button class="class-button" onclick="showClass(10)">Class 10</button>
 
     </div>
 
 </div>
 
 
+<!-- STUDENTS -->
 
-<!-- =========================
-     STUDENT INFORMATION
-========================== -->
+<div id="studentSection" class="section hidden">
 
-<div id="studentSection" class="student-section">
-
-    <h2 id="classTitle">
-        Students
-    </h2>
+    <h2 id="classTitle">Students</h2>
 
     <div id="studentList"></div>
 
 </div>
 
 
+<!-- MANAGEMENT -->
 
-<!-- =========================
-     TEACHER / ADMIN
-========================== -->
-
-<div class="management-section">
+<div class="section">
 
     <h2>Teacher & Admin</h2>
 
-    <label>
-        Teacher ID
-    </label>
+    <!-- ADD STUDENT -->
 
-    <input
-        type="text"
-        id="teacherID"
-        placeholder="Enter Teacher ID"
-    >
-
-    <button
-        class="management-button"
-        onclick="teacherLogin()"
-    >
-        Teacher Login
+    <button class="submit-button" onclick="toggleForm('studentForm')">
+        + Add New Student
     </button>
 
+    <div id="studentForm" class="form-box">
 
-    <br><br>
+        <h3>Add Student</h3>
+
+        <label>Student Name</label>
+        <input id="studentName" type="text">
+
+        <label>Class</label>
+        <select id="studentClass">
+            <option value="">Select Class</option>
+            <option value="1">Class 1</option>
+            <option value="2">Class 2</option>
+            <option value="3">Class 3</option>
+            <option value="4">Class 4</option>
+            <option value="5">Class 5</option>
+            <option value="6">Class 6</option>
+            <option value="7">Class 7</option>
+            <option value="8">Class 8</option>
+            <option value="9">Class 9</option>
+            <option value="10">Class 10</option>
+        </select>
+
+        <label>Group</label>
+        <select id="studentGroup">
+            <option value="">Select Group</option>
+            <option>Science</option>
+            <option>Arts</option>
+            <option>Commerce</option>
+            <option>General</option>
+        </select>
+
+        <label>Roll</label>
+        <input id="studentRoll" type="text">
+
+        <label>Hobby</label>
+        <input id="studentHobby" type="text">
+
+        <label>Student Type</label>
+        <select id="studentType">
+            <option>Regular</option>
+            <option>Day Scholar</option>
+            <option>Other</option>
+        </select>
+
+        <label>Date of Birth</label>
+        <input id="studentDOB" type="date">
+
+        <label>Father's Name</label>
+        <input id="fatherName" type="text">
+
+        <label>Mother's Name</label>
+        <input id="motherName" type="text">
+
+        <label>Phone</label>
+        <input id="studentPhone" type="tel">
+
+        <label>Address</label>
+        <textarea id="studentAddress"></textarea>
+
+        <label>Other Information</label>
+        <textarea id="studentOther"></textarea>
+
+        <button class="submit-button" onclick="addStudent()">
+            Save Student
+        </button>
+
+    </div>
 
 
-    <label>
-        Admin Password
-    </label>
+    <br>
 
-    <input
-        type="password"
-        id="adminPassword"
-        placeholder="Enter Admin Password"
-    >
 
-    <button
-        class="management-button"
-        onclick="adminLogin()"
-    >
-        Admin Login
+    <!-- TEACHER -->
+
+    <button class="submit-button" onclick="toggleForm('teacherForm')">
+        + Add New Teacher
     </button>
 
+    <div id="teacherForm" class="form-box">
 
-    <!-- ADMIN PANEL -->
+        <h3>Add Teacher</h3>
 
-    <div id="adminPanel">
+        <label>Teacher ID</label>
+        <input id="teacherId" type="text">
 
-        <h3>Admin Panel</h3>
+        <label>Teacher Name</label>
+        <input id="teacherName" type="text">
 
-        <p>
-            Pending Requests
-        </p>
+        <label>Education</label>
+        <input id="teacherEducation" type="text">
 
-        <div class="pending-box">
-            No pending requests currently.
-        </div>
+        <label>Subject</label>
+        <input id="teacherSubject" type="text">
 
-        <h3>Student Management</h3>
+        <label>GPA</label>
+        <input id="teacherGPA" type="text">
 
-        <button
-            class="management-button"
-            onclick="manageStudents()"
-        >
-            Manage Students
+        <label>CGPA</label>
+        <input id="teacherCGPA" type="text">
+
+        <label>Salary</label>
+        <input id="teacherSalary" type="text">
+
+        <label>Phone</label>
+        <input id="teacherPhone" type="tel">
+
+        <label>Other Information</label>
+        <textarea id="teacherOther"></textarea>
+
+        <button class="submit-button" onclick="addTeacher()">
+            Save Teacher
         </button>
 
     </div>
@@ -351,219 +323,631 @@
 </div>
 
 
+<!-- TEACHER LIST -->
 
-<!-- =========================
-     FOOTER
-========================== -->
+<div class="section">
+
+    <h2>Teachers</h2>
+
+    <div id="teacherList">
+        <p>No teachers added yet.</p>
+    </div>
+
+</div>
+
 
 <footer>
-
     Powered by Eduplus.
-
 </footer>
-
 
 
 <script>
 
-    /* =========================
-       SAMPLE STUDENT DATA
-    ========================== */
+/* =========================
+   DATA STORAGE
+========================= */
 
-    const students = {
+let students =
+    JSON.parse(localStorage.getItem("students")) || [];
 
-        1: [
-            {
-                name: "Student 1",
-                roll: "001",
-                age: "7"
-            },
+let teachers =
+    JSON.parse(localStorage.getItem("teachers")) || [];
 
-            {
-                name: "Student 2",
-                roll: "002",
-                age: "7"
-            }
-        ],
 
-        2: [
-            {
-                name: "Student 3",
-                roll: "001",
-                age: "8"
-            }
-        ],
+/* =========================
+   FORM CONTROL
+========================= */
 
-        3: [],
+function toggleForm(formId) {
 
-        4: [],
+    const form =
+        document.getElementById(formId);
 
-        5: [],
+    if (form.style.display === "block") {
+        form.style.display = "none";
+    } else {
+        form.style.display = "block";
+    }
 
-        6: [],
+}
 
-        7: [],
 
-        8: [],
+/* =========================
+   ADD STUDENT
+========================= */
 
-        9: [],
+function addStudent() {
 
-        10: []
+    const name =
+        document.getElementById("studentName").value.trim();
+
+    const classNumber =
+        document.getElementById("studentClass").value;
+
+    const group =
+        document.getElementById("studentGroup").value;
+
+    const roll =
+        document.getElementById("studentRoll").value.trim();
+
+    if (!name || !classNumber || !roll) {
+
+        alert("Please enter Name, Class and Roll.");
+
+        return;
+    }
+
+
+    const student = {
+
+        id: Date.now(),
+
+        name: name,
+
+        classNumber: classNumber,
+
+        group: group,
+
+        roll: roll,
+
+        hobby:
+            document.getElementById("studentHobby").value,
+
+        studentType:
+            document.getElementById("studentType").value,
+
+        dob:
+            document.getElementById("studentDOB").value,
+
+        father:
+            document.getElementById("fatherName").value,
+
+        mother:
+            document.getElementById("motherName").value,
+
+        phone:
+            document.getElementById("studentPhone").value,
+
+        address:
+            document.getElementById("studentAddress").value,
+
+        other:
+            document.getElementById("studentOther").value
 
     };
 
 
+    students.push(student);
 
-    /* =========================
-       SHOW CLASS
-    ========================== */
-
-    function showClass(classNumber) {
-
-        const section =
-            document.getElementById("studentSection");
-
-        const title =
-            document.getElementById("classTitle");
-
-        const list =
-            document.getElementById("studentList");
+    localStorage.setItem(
+        "students",
+        JSON.stringify(students)
+    );
 
 
-        section.style.display = "block";
+    alert("Student added successfully.");
+
+    document.getElementById("studentForm").reset();
+
+    showClass(classNumber);
+
+}
 
 
-        title.textContent =
-            "Class " + classNumber + " Students";
+/* =========================
+   SHOW CLASS
+========================= */
+
+function showClass(classNumber) {
+
+    const section =
+        document.getElementById("studentSection");
+
+    const title =
+        document.getElementById("classTitle");
+
+    const list =
+        document.getElementById("studentList");
 
 
-        list.innerHTML = "";
+    section.classList.remove("hidden");
+
+    title.textContent =
+        "Class " + classNumber + " Students";
 
 
-        if (
-            !students[classNumber] ||
-            students[classNumber].length === 0
-        ) {
-
-            list.innerHTML =
-                "<p>No student data available.</p>";
-
-            return;
-
-        }
+    list.innerHTML = "";
 
 
-        students[classNumber].forEach(function(student) {
+    const classStudents =
+        students.filter(function(student) {
 
-            const card =
-                document.createElement("div");
-
-            card.className =
-                "student-card";
-
-
-            card.innerHTML = `
-
-                <h3>${student.name}</h3>
-
-                <p>
-                    <strong>Roll:</strong>
-                    ${student.roll}
-                </p>
-
-                <p>
-                    <strong>Age:</strong>
-                    ${student.age}
-                </p>
-
-            `;
-
-
-            list.appendChild(card);
+            return student.classNumber == classNumber;
 
         });
 
+
+    if (classStudents.length === 0) {
+
+        list.innerHTML =
+            "<p>No students added to this class yet.</p>";
+
+        return;
     }
 
 
+    classStudents.forEach(function(student) {
 
-    /* =========================
-       TEACHER LOGIN
-    ========================== */
+        const card =
+            document.createElement("div");
 
-    function teacherLogin() {
-
-        const teacherID =
-            document.getElementById("teacherID").value.trim();
+        card.className =
+            "person-card";
 
 
-        if (teacherID === "") {
+        card.innerHTML = `
 
-            alert("Please enter Teacher ID.");
+            <h3>${escapeHTML(student.name)}</h3>
 
-            return;
+            <p><strong>Roll:</strong>
+            ${escapeHTML(student.roll)}</p>
 
-        }
+            <p><strong>Group:</strong>
+            ${escapeHTML(student.group)}</p>
+
+            <p><strong>Student Type:</strong>
+            ${escapeHTML(student.studentType)}</p>
+
+            <p><strong>Hobby:</strong>
+            ${escapeHTML(student.hobby)}</p>
+
+            <details>
+
+                <summary>
+                    <strong>View Full Biodata</strong>
+                </summary>
+
+                <p><strong>Date of Birth:</strong>
+                ${escapeHTML(student.dob)}</p>
+
+                <p><strong>Father:</strong>
+                ${escapeHTML(student.father)}</p>
+
+                <p><strong>Mother:</strong>
+                ${escapeHTML(student.mother)}</p>
+
+                <p><strong>Phone:</strong>
+                ${escapeHTML(student.phone)}</p>
+
+                <p><strong>Address:</strong>
+                ${escapeHTML(student.address)}</p>
+
+                <p><strong>Other:</strong>
+                ${escapeHTML(student.other)}</p>
+
+            </details>
+
+            <br>
+
+            <button class="action-button"
+                onclick="editStudent(${student.id})">
+                Edit
+            </button>
+
+            <button class="action-button"
+                onclick="transferStudent(${student.id})">
+                Transfer Class
+            </button>
+
+            <button class="action-button danger"
+                onclick="deleteStudent(${student.id})">
+                Delete
+            </button>
+        `;
 
 
-        alert(
-            "Teacher ID accepted for this demo."
+        list.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================
+   DELETE STUDENT
+========================= */
+
+function deleteStudent(id) {
+
+    if (!confirm("Delete this student?")) {
+        return;
+    }
+
+
+    students =
+        students.filter(function(student) {
+
+            return student.id !== id;
+
+        });
+
+
+    localStorage.setItem(
+        "students",
+        JSON.stringify(students)
+    );
+
+
+    alert("Student deleted.");
+
+}
+
+
+/* =========================
+   TRANSFER STUDENT
+========================= */
+
+function transferStudent(id) {
+
+    const student =
+        students.find(function(s) {
+
+            return s.id === id;
+
+        });
+
+
+    if (!student) return;
+
+
+    const newClass =
+        prompt(
+            "Enter the new class (1-10):",
+            student.classNumber
         );
 
+
+    if (!newClass) return;
+
+
+    if (
+        Number(newClass) < 1 ||
+        Number(newClass) > 10
+    ) {
+
+        alert("Class must be between 1 and 10.");
+
+        return;
     }
 
 
-
-    /* =========================
-       ADMIN LOGIN
-    ========================== */
-
-    function adminLogin() {
-
-        const password =
-            document.getElementById("adminPassword").value;
+    student.classNumber =
+        newClass;
 
 
-        /*
-         IMPORTANT:
-         This is only a demo password.
-         It is NOT secure for a real school system.
-        */
-
-        const demoPassword =
-            "admin123";
+    localStorage.setItem(
+        "students",
+        JSON.stringify(students)
+    );
 
 
-        if (password === demoPassword) {
+    alert(
+        student.name +
+        " transferred to Class " +
+        newClass
+    );
 
-            document.getElementById("adminPanel")
-                .style.display = "block";
 
-            alert("Admin access granted.");
+    showClass(newClass);
 
-        }
+}
 
-        else {
 
-            alert("Incorrect admin password.");
+/* =========================
+   EDIT STUDENT
+========================= */
 
-        }
+function editStudent(id) {
 
+    const student =
+        students.find(function(s) {
+
+            return s.id === id;
+
+        });
+
+
+    if (!student) return;
+
+
+    const newName =
+        prompt("Student name:", student.name);
+
+    if (newName === null) return;
+
+
+    student.name = newName;
+
+
+    const newRoll =
+        prompt("Roll:", student.roll);
+
+    if (newRoll !== null) {
+        student.roll = newRoll;
     }
 
 
+    const newHobby =
+        prompt("Hobby:", student.hobby);
 
-    /* =========================
-       MANAGE STUDENTS
-    ========================== */
+    if (newHobby !== null) {
+        student.hobby = newHobby;
+    }
 
-    function manageStudents() {
+
+    localStorage.setItem(
+        "students",
+        JSON.stringify(students)
+    );
+
+
+    alert("Student updated.");
+
+    showClass(student.classNumber);
+
+}
+
+
+/* =========================
+   ADD TEACHER
+========================= */
+
+function addTeacher() {
+
+    const id =
+        document.getElementById("teacherId").value.trim();
+
+    const name =
+        document.getElementById("teacherName").value.trim();
+
+
+    if (!id || !name) {
 
         alert(
-            "Student management panel will be added here."
+            "Please enter Teacher ID and Name."
         );
 
+        return;
     }
+
+
+    const teacher = {
+
+        id: Date.now(),
+
+        teacherId: id,
+
+        name: name,
+
+        education:
+            document.getElementById("teacherEducation").value,
+
+        subject:
+            document.getElementById("teacherSubject").value,
+
+        gpa:
+            document.getElementById("teacherGPA").value,
+
+        cgpa:
+            document.getElementById("teacherCGPA").value,
+
+        salary:
+            document.getElementById("teacherSalary").value,
+
+        phone:
+            document.getElementById("teacherPhone").value,
+
+        other:
+            document.getElementById("teacherOther").value
+
+    };
+
+
+    teachers.push(teacher);
+
+
+    localStorage.setItem(
+        "teachers",
+        JSON.stringify(teachers)
+    );
+
+
+    alert("Teacher added successfully.");
+
+
+    document.getElementById("teacherForm").reset();
+
+
+    displayTeachers();
+
+}
+
+
+/* =========================
+   DISPLAY TEACHERS
+========================= */
+
+function displayTeachers() {
+
+    const list =
+        document.getElementById("teacherList");
+
+
+    list.innerHTML = "";
+
+
+    if (teachers.length === 0) {
+
+        list.innerHTML =
+            "<p>No teachers added yet.</p>";
+
+        return;
+    }
+
+
+    teachers.forEach(function(teacher) {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "person-card";
+
+
+        card.innerHTML = `
+
+            <h3>
+                ${escapeHTML(teacher.name)}
+            </h3>
+
+            <p>
+                <strong>Teacher ID:</strong>
+                ${escapeHTML(teacher.teacherId)}
+            </p>
+
+            <p>
+                <strong>Subject:</strong>
+                ${escapeHTML(teacher.subject)}
+            </p>
+
+            <details>
+
+                <summary>
+                    <strong>View Teacher Biodata</strong>
+                </summary>
+
+                <p>
+                    <strong>Education:</strong>
+                    ${escapeHTML(teacher.education)}
+                </p>
+
+                <p>
+                    <strong>GPA:</strong>
+                    ${escapeHTML(teacher.gpa)}
+                </p>
+
+                <p>
+                    <strong>CGPA:</strong>
+                    ${escapeHTML(teacher.cgpa)}
+                </p>
+
+                <p>
+                    <strong>Salary:</strong>
+                    ${escapeHTML(teacher.salary)}
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    ${escapeHTML(teacher.phone)}
+                </p>
+
+                <p>
+                    <strong>Other:</strong>
+                    ${escapeHTML(teacher.other)}
+                </p>
+
+            </details>
+
+            <br>
+
+            <button class="action-button danger"
+                onclick="deleteTeacher(${teacher.id})">
+                Delete Teacher
+            </button>
+
+        `;
+
+
+        list.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================
+   DELETE TEACHER
+========================= */
+
+function deleteTeacher(id) {
+
+    if (!confirm("Delete this teacher?")) {
+        return;
+    }
+
+
+    teachers =
+        teachers.filter(function(teacher) {
+
+            return teacher.id !== id;
+
+        });
+
+
+    localStorage.setItem(
+        "teachers",
+        JSON.stringify(teachers)
+    );
+
+
+    displayTeachers();
+
+}
+
+
+/* =========================
+   SECURITY HELPER
+========================= */
+
+function escapeHTML(value) {
+
+    if (!value) return "";
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================
+   LOAD DATA
+========================= */
+
+displayTeachers();
 
 </script>
 
